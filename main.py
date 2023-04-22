@@ -1,8 +1,13 @@
 # XDG_SESSION_TYPE=x11
 # pyuic5 -x file.ui -o file.py
-import sys
+import sys, json
 
-from PyQt5.QtWidgets import QApplication, QStackedWidget
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import (
+    QApplication, 
+    QStackedWidget, 
+    QFileDialog,
+)
 
 from view.main_view import MainView
 from controller.controller import Controller
@@ -40,6 +45,10 @@ class App(QApplication):
         self.main_view.ui.filter_pushButton.clicked.connect(self.filter)
         self.main_view.ui.reset_pushButton.clicked.connect(self.reset) 
         
+        self.main_view.file_menu.addAction("Open...", self.action_clicked)
+        self.main_view.file_menu.addAction("Open Doc...", self.action_clicked)
+        self.main_view.file_menu.addAction("Save...", self.action_clicked)
+
     def switch_view(self, view):
         self.current_view = view
         self.widgets.setCurrentWidget(self.current_view)
@@ -60,6 +69,43 @@ class App(QApplication):
     
     def reset(self):
         self.controller.process_reset()
+    
+    @QtCore.pyqtSlot()
+    def action_clicked(self):
+        action = self.sender()
+        if action.text() == "Open...":
+            self.fname = QFileDialog.getOpenFileName(self.main_view)[0]
+            self.load_file(types=["json"])
+        elif action.text() == "Open Doc...":
+            self.fname = QFileDialog.getOpenFileName(self.main_view)[0]
+            self.load_file(types=["doc", "docx"])
+        elif action.text() == "Save...":
+            self.save_file()    
+    
+    def load_file(self, types: list):
+        if self.fname.split('.')[-1] not in types:
+            print("Invalid file type!")
+            return
+        
+        if "json" in types:
+            with open(self.fname, 'r') as f:
+                data = json.load(f)
+                self.controller.fill_load_data(data)
+        elif "doc" in types:
+            with open(self.fname, 'r') as f:
+                text = f.read()
+            self.main_view.ui.raw_text_textEdit.setText(text)
+    
+    def save_file(self):
+        result = self.controller.get_result()
+        fname = QFileDialog.getSaveFileName(self.main_view)[0]
+
+        try:
+            with open(fname, 'w') as f:
+                json.dump(result, f, indent=4)
+        except Exception as e:
+            print(e.__str__())
+            print("couldn't save file!")
 
 def application():
     app = App(sys.argv)

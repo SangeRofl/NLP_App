@@ -40,8 +40,7 @@ class Model:
                     res[lemma][i][0] += 1
         
         
-        self.current_result = res
-        self.fill_table()
+        self.fill_table(res)
         return res           
     
     def get_table_data(self):
@@ -73,8 +72,9 @@ class Model:
         print("result: ", result)
         return result
         
-    def fill_table(self):
-        self.view.main_view.fill(self.current_result)
+    def fill_table(self, res):
+        self.current_result = res
+        self.view.main_view.fill(res)
     
     def filter_table(self, text: str):
         if self.first_filter:

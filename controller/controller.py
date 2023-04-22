@@ -14,3 +14,9 @@ class Controller:
         
     def process_reset(self):
         self.model.reset_table()
+        
+    def get_result(self):
+        return self.model.current_result
+    
+    def fill_load_data(self, data: dict):
+        self.model.fill_table(data)

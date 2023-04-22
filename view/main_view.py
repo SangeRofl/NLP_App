@@ -1,4 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow, QTableWidgetItem
+from PyQt5.QtWidgets import (
+    QMainWindow, 
+    QTableWidgetItem,
+    QMenuBar,
+    QMenu
+)
 from PyQt5.QtGui import QFont
 
 from view.templates.main_ui import Ui_MainWindow
@@ -14,11 +19,19 @@ class MainView(QMainWindow):
         self.init_UI()
 
     def init_UI(self):
+        self.create_menu_bar()
         self.hide_interface()
                 
     def hide_interface(self):
         pass
     
+    def create_menu_bar(self):
+        menuBar = QMenuBar(self)
+        self.setMenuBar(menuBar)
+
+        self.file_menu = QMenu("&File", self)
+        menuBar.addMenu(self.file_menu)
+
     def fill(self, result):
         self.clear_table()
         table = self.ui.tableWidget
