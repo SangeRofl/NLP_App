@@ -55,7 +55,7 @@ class Model:
                     value = [item.text(), item.font().bold()] if column == 0 else item.text()
                     row_data.append(value)  
                 else:
-                    row_data.append('')
+                    row_data.append(['', False]) if column == 0 else row_data.append('')
                 
             raw_data.append(row_data)
         
@@ -64,14 +64,17 @@ class Model:
         prev_key = None
         for item in raw_data:
             key, value1, value2 = item
-            if key[1]:
-                result[key[0]] = {}
-                prev_key = key[0]
-            elif prev_key:
-                result[prev_key][key[0]] = [value1, value2]
-            else:
-                result[''][key[0]] = [value1, value2]
-        
+            try:
+                if key[1]:
+                    result[key[0]] = {}
+                    prev_key = key[0]
+                elif prev_key:
+                    result[prev_key][key[0]] = [value1, value2]
+                else:
+                    result[''][key[0]] = [value1, value2]
+            except IndexError:
+                pass
+
         print("result: ", result)
         return result
         
