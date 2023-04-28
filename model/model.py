@@ -12,6 +12,7 @@ nltk.download('punkt')
 class Model:
     morph = pymorphy2.MorphAnalyzer()
     first_filter = True
+    filter_mode = False
     
     def __init__(self, view):
         self.view = view
@@ -59,15 +60,17 @@ class Model:
             raw_data.append(row_data)
         
         # process raw_data
-        result = {}
+        result = {'': {}}
         prev_key = None
         for item in raw_data:
             key, value1, value2 = item
             if key[1]:
                 result[key[0]] = {}
                 prev_key = key[0]
-            else:
+            elif prev_key:
                 result[prev_key][key[0]] = [value1, value2]
+            else:
+                result[''][key[0]] = [value1, value2]
         
         print("result: ", result)
         return result
@@ -80,6 +83,7 @@ class Model:
         if self.first_filter:
             self.refresh_current_result()
         self.first_filter = False
+        self.filter_mode = True
 
         filter_result = self.current_result.copy()
         for lexem in self.current_result.keys():
@@ -89,7 +93,10 @@ class Model:
         self.view.main_view.fill(filter_result)
         
     def reset_table(self):
+        if not self.filter_mode:
+            self.refresh_current_result()
         self.first_filter = True
+        self.filter_mode = False
         self.view.main_view.fill(self.current_result)
         
     def refresh_current_result(self):

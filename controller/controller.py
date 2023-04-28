@@ -16,6 +16,7 @@ class Controller:
         self.model.reset_table()
         
     def get_result(self):
+        self.model.refresh_current_result()
         return self.model.current_result
     
     def fill_load_data(self, data: dict):
