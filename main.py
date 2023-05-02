@@ -46,7 +46,7 @@ class App(QApplication):
         self.main_view.ui.reset_pushButton.clicked.connect(self.reset) 
         
         self.main_view.file_menu.addAction("Open...", self.action_clicked)
-        self.main_view.file_menu.addAction("Open Doc...", self.action_clicked)
+        self.main_view.file_menu.addAction("Open txt...", self.action_clicked)
         self.main_view.file_menu.addAction("Save...", self.action_clicked)
 
     def switch_view(self, view):
@@ -55,7 +55,7 @@ class App(QApplication):
         
     def process(self):
         text = self.main_view.ui.raw_text_textEdit.toPlainText()
-        self.controller.process_text(text)
+        self.controller.process_sentence(text)
         
     def add(self):
         self.main_view.add_row()
@@ -76,9 +76,9 @@ class App(QApplication):
         if action.text() == "Open...":
             self.fname = QFileDialog.getOpenFileName(self.main_view)[0]
             self.load_file(types=["json"])
-        elif action.text() == "Open Doc...":
+        elif action.text() == "Open txt...":
             self.fname = QFileDialog.getOpenFileName(self.main_view)[0]
-            self.load_file(types=["doc", "docx"])
+            self.load_file(types=["txt"])
         elif action.text() == "Save...":
             self.save_file()    
     
@@ -91,7 +91,7 @@ class App(QApplication):
             with open(self.fname, 'r') as f:
                 data = json.load(f)
                 self.controller.fill_load_data(data)
-        elif "doc" in types:
+        elif "txt" in types:
             with open(self.fname, 'r') as f:
                 text = f.read()
             self.main_view.ui.raw_text_textEdit.setText(text)

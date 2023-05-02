@@ -2,11 +2,13 @@
 import nltk
 import re
 import pymorphy2
+import spacy
 
 from nltk.tokenize import word_tokenize, sent_tokenize
 
 
 nltk.download('punkt')
+nlp = spacy.load("en_core_web_sm")
 
 
 class Model:
@@ -40,9 +42,24 @@ class Model:
                 else:
                     res[lemma][i][0] += 1
         
-        
         self.fill_table(res)
-        return res           
+        return res  
+    
+    def process_sentence(self, sentence: str) -> list:
+        res = {}
+        doc = nlp(sentence)
+        for token in doc:
+            token_text = token.text
+            if not re.match(r"\b[A-Za-z]+\b", token_text):
+                continue
+
+            token_pos = spacy.explain(str(token.pos_))
+            token_dep = spacy.explain(str(token.dep_))
+            # token_pos = token.pos_
+            # token_dep = token.dep_
+            token_head = token.head.text
+            res[token_text] = [token_pos, token_dep, token_head]
+        return res         
     
     def get_table_data(self):
         table = self.view.main_view.ui.tableWidget
@@ -52,29 +69,18 @@ class Model:
             for column in range(table.columnCount()):
                 item = table.item(row, column)
                 if item is not None:
-                    value = [item.text(), item.font().bold()] if column == 0 else item.text()
-                    row_data.append(value)  
+                    row_data.append(item.text())  
                 else:
-                    row_data.append(['', False]) if column == 0 else row_data.append('')
-                
+                    row_data.append('')
+    
             raw_data.append(row_data)
         
         # process raw_data
-        result = {'': {}}
-        prev_key = None
+        result = {}
         for item in raw_data:
-            key, value1, value2 = item
-            try:
-                if key[1]:
-                    result[key[0]] = {}
-                    prev_key = key[0]
-                elif prev_key:
-                    result[prev_key][key[0]] = [value1, value2]
-                else:
-                    result[''][key[0]] = [value1, value2]
-            except IndexError:
-                pass
-
+            key, values = item[0], item[1:]
+            result[key] = values
+    
         print("result: ", result)
         return result
         
@@ -89,9 +95,9 @@ class Model:
         self.filter_mode = True
 
         filter_result = self.current_result.copy()
-        for lexem in self.current_result.keys():
-            if not lexem.startswith(text):
-                del filter_result[lexem]
+        for word in self.current_result.keys():
+            if not word.startswith(text):
+                del filter_result[word]
 
         self.view.main_view.fill(filter_result)
         

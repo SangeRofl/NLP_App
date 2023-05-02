@@ -5,9 +5,10 @@ class Controller:
     def __init__(self, view) -> None:
         self.model = Model(view)
     
-    def process_text(self, text: str):
-        processed_text = self.model.process_text(text)
-        print("processed_text: ", processed_text)
+    def process_sentence(self, text: str):
+        processed_sentence = self.model.process_sentence(text)
+        print("sentence: ", processed_sentence)
+        self.model.fill_table(processed_sentence)
 
     def process_filter(self, filter_text: str):
         self.model.filter_table(filter_text)

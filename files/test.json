@@ -1,14 +1,26 @@
 {
-    "\u0442\u0435\u0441\u0442": {
-        "\u0442\u0435\u0441\u0442": [
-            "1",
-            ""
-        ]
-    },
-    "\u0444\u0438\u043a\u0441\u0438\u043a": {
-        "\u0444\u0438\u043a\u0441\u0438\u043a\u0438": [
-            "1",
-            ""
-        ]
-    }
+    "Triangles": [
+        "noun, nominal subject, are"
+    ],
+    "are": [
+        "auxiliary, root, are"
+    ],
+    "one": [
+        "numeral, attribute, are"
+    ],
+    "of": [
+        "adposition, prepositional modifier, one"
+    ],
+    "the": [
+        "determiner, determiner, shapes"
+    ],
+    "most": [
+        "adverb, adverbial modifier, basic"
+    ],
+    "basic": [
+        "adjective, adjectival modifier, shapes"
+    ],
+    "shapes": [
+        "noun, object of preposition, of"
+    ]
 }
