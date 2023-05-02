@@ -20,41 +20,50 @@ class Ui_MainWindow(object):
         MainWindow.resize(714, 595)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setGeometry(QtCore.QRect(20, 220, 671, 281))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(2)
         self.tableWidget.setRowCount(0)
+        
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, item)
+        
         self.add_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.add_pushButton.setGeometry(QtCore.QRect(100, 510, 75, 23))
         self.add_pushButton.setObjectName("add_pushButton")
+        
         self.process_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.process_pushButton.setGeometry(QtCore.QRect(20, 510, 75, 23))
         self.process_pushButton.setObjectName("process_pushButton")
+        
         self.raw_text_textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.raw_text_textEdit.setGeometry(QtCore.QRect(20, 30, 671, 161))
         self.raw_text_textEdit.setObjectName("raw_text_textEdit")
+        
         self.raw_text_label = QtWidgets.QLabel(self.centralwidget)
         self.raw_text_label.setGeometry(QtCore.QRect(20, 10, 71, 16))
         self.raw_text_label.setObjectName("raw_text_label")
+        
         self.result_label = QtWidgets.QLabel(self.centralwidget)
         self.result_label.setGeometry(QtCore.QRect(20, 200, 61, 16))
         self.result_label.setObjectName("result_label")
+        
         self.filter_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.filter_pushButton.setGeometry(QtCore.QRect(300, 510, 75, 21))
         self.filter_pushButton.setObjectName("filter_pushButton")
+        
         self.filter_textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.filter_textEdit.setGeometry(QtCore.QRect(390, 520, 301, 31))
         self.filter_textEdit.setObjectName("filter_textEdit")
+        
         self.delete_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.delete_pushButton.setGeometry(QtCore.QRect(180, 510, 75, 23))
         self.delete_pushButton.setObjectName("delete_pushButton")
+        
         self.reset_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.reset_pushButton.setGeometry(QtCore.QRect(300, 540, 75, 21))
         self.reset_pushButton.setObjectName("reset_pushButton")
@@ -67,11 +76,9 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "LEXEM/WORDFORM"))
+        item.setText(_translate("MainWindow", "TYPES/WORDS"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "SEENUMBER"))
-        item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "NOTES"))
+        item.setText(_translate("MainWindow", "PROPS"))
         self.add_pushButton.setText(_translate("MainWindow", "ADD"))
         self.process_pushButton.setText(_translate("MainWindow", "PROCESS"))
         self.raw_text_label.setText(_translate("MainWindow", "RAW TEXT"))

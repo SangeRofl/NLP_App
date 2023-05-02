@@ -8,6 +8,7 @@ class Controller:
     def process_text(self, text: str):
         processed_text = self.model.process_text(text)
         print("processed_text: ", processed_text)
+        self.model.fill_table(processed_text)
 
     def process_filter(self, filter_text: str):
         self.model.filter_table(filter_text)

@@ -1,0 +1,1 @@
+If you want to customize multiple components of the language data or add support for a custom language or domain-specific “dialect”, you can also implement your own language subclass. I wish good luck to Maksim Krasotsky.

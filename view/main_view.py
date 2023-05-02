@@ -12,6 +12,8 @@ from view.templates.main_ui import Ui_MainWindow
 class MainView(QMainWindow):
     bold_font = QFont()
     bold_font.setBold(True)
+    italic_font = QFont()
+    italic_font.setItalic(True)
     
     def __init__(self):
         super(MainView, self).__init__()
@@ -35,35 +37,29 @@ class MainView(QMainWindow):
     def fill(self, result):
         self.clear_table()
         table = self.ui.tableWidget
-        result = dict(sorted(result.items()))
-        print("fill data: ", result)
         
-        for lexem, wordforms in result.items():
+        for type_title, words in result.items():
             row = table.rowCount()
             table.setRowCount(row+1)
             col = 0
             
-            if lexem:
-                lexem_cell = QTableWidgetItem(str(lexem))
-                lexem_cell.setFont(MainView.bold_font)
-                table.setItem(row, col, lexem_cell)
+            if type_title:
+                type_title_cell = QTableWidgetItem(str(type_title))
+                type_title_cell.setFont(MainView.bold_font)
+                table.setItem(row, col, type_title_cell)
                 row += 1
 
-            for wordform, seenumber_and_note in wordforms.items():
-                if wordform:
+            for word, props in words.items():
+                if word:
                     table.setRowCount(row+1)
-                    wordform_cell = QTableWidgetItem(str(wordform))
-                    table.setItem(row, col, wordform_cell)
+                    word_cell = QTableWidgetItem(str(word))
+                    table.setItem(row, col, word_cell)
                     col += 1 
                 
-                    if seenumber := seenumber_and_note[0]:
-                        seenumber_cell = QTableWidgetItem(str(seenumber))
-                        table.setItem(row, col, seenumber_cell)
-                    col += 1
-                
-                    if note := seenumber_and_note[1]:
-                        seenumber_cell = QTableWidgetItem(str(note))
-                        table.setItem(row, col, seenumber_cell)
+                    if props:
+                        props_cell = QTableWidgetItem(", ".join(props))
+                        props_cell.setFont(MainView.italic_font)
+                        table.setItem(row, col, props_cell)
                     row += 1
                     col = 0
 

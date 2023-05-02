@@ -1,14 +1,86 @@
 {
-    "\u0442\u0435\u0441\u0442": {
-        "\u0442\u0435\u0441\u0442": [
-            "1",
-            ""
+    "noun_chunks": {
+        "you": [
+            "you, nominal subject"
+        ],
+        "multiple components": [
+            "components, direct object"
+        ],
+        "the language data": [
+            "data, object of preposition"
+        ],
+        "support": [
+            "support, direct object"
+        ],
+        "a custom language or domain-specific \u201cdialect": [
+            "dialect, object of preposition"
+        ],
+        "your own language subclass": [
+            "subclass, direct object"
+        ],
+        "I": [
+            "I, nominal subject"
+        ],
+        "good luck": [
+            "luck, direct object"
+        ],
+        "Maksim Krasotsky": [
+            "Krasotsky, object of preposition"
         ]
     },
-    "\u0444\u0438\u043a\u0441\u0438\u043a": {
-        "\u0444\u0438\u043a\u0441\u0438\u043a\u0438": [
-            "1",
-            ""
+    "named_entities": {
+        "Maksim Krasotsky": [
+            "People, including fictional"
+        ]
+    },
+    "all_def": {
+        "customize": [
+            "make to specifications"
+        ],
+        "multiple": [
+            "the product of a quantity by an integer"
+        ],
+        "components": [
+            "an abstract part of something"
+        ],
+        "language": [
+            "a systematic means of communicating by the use of sounds or conventional symbols"
+        ],
+        "data": [
+            "a collection of facts from which conclusions may be drawn"
+        ],
+        "add": [
+            "a condition (mostly in boys) characterized by behavioral and learning disorders"
+        ],
+        "support": [
+            "the activity of providing for or maintaining by supplying with money or necessities"
+        ],
+        "custom": [
+            "accepted or habitual practice"
+        ],
+        "domain": [
+            "a particular environment or walk of life"
+        ],
+        "specific": [
+            "a fact about some part (as opposed to general)"
+        ],
+        "dialect": [
+            "the usage or vocabulary that is characteristic of a specific group of people"
+        ],
+        "implement": [
+            "instrumentation (a piece of equipment or tool) used to effect an end"
+        ],
+        "subclass": [
+            "(biology) a taxonomic category below a class and above an order"
+        ],
+        "I": [
+            "a nonmetallic element belonging to the halogens; used especially in medicine and photography and in dyes; occurs naturally only in combination in small quantities (as in sea water or rocks)"
+        ],
+        "wish": [
+            "a specific feeling of desire"
+        ],
+        "luck": [
+            "your overall circumstances or condition in life (including everything that happens to you)"
         ]
     }
 }
