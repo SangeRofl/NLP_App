@@ -16,5 +16,5 @@ def process_sentence(sentence: str) -> list:
         res.append([token_text, token_pos, token_dep, token_head])
     return res
 
-for i in process_sentence("Some english text"):
+for i in process_sentence("This is me"):
     print(i)

@@ -1,0 +1,17 @@
+{"intents":[
+    {
+        "tag": "greetings", 
+        "patterns": ["hello", "hi"],
+        "responses": ["good morning"]
+    },
+    {
+        "tag": "goodbye", 
+        "patterns": ["bye", "see you"],
+        "responses": ["Have a nice day"]
+    },
+    {
+        "tag": "creators", 
+        "patterns": ["creators"],
+        "responses": ["my creators a Sange and Mike Kras"]
+    }]
+}
