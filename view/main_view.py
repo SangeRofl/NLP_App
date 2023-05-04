@@ -33,39 +33,7 @@ class MainView(QMainWindow):
         menuBar.addMenu(self.file_menu)
 
     def fill(self, result):
-        self.clear_table()
-        table = self.ui.tableWidget
-        result = dict(sorted(result.items()))
-        print("fill data: ", result)
-        
-        for lexem, wordforms in result.items():
-            row = table.rowCount()
-            table.setRowCount(row+1)
-            col = 0
-            
-            if lexem:
-                lexem_cell = QTableWidgetItem(str(lexem))
-                lexem_cell.setFont(MainView.bold_font)
-                table.setItem(row, col, lexem_cell)
-                row += 1
-
-            for wordform, seenumber_and_note in wordforms.items():
-                if wordform:
-                    table.setRowCount(row+1)
-                    wordform_cell = QTableWidgetItem(str(wordform))
-                    table.setItem(row, col, wordform_cell)
-                    col += 1 
-                
-                    if seenumber := seenumber_and_note[0]:
-                        seenumber_cell = QTableWidgetItem(str(seenumber))
-                        table.setItem(row, col, seenumber_cell)
-                    col += 1
-                
-                    if note := seenumber_and_note[1]:
-                        seenumber_cell = QTableWidgetItem(str(note))
-                        table.setItem(row, col, seenumber_cell)
-                    row += 1
-                    col = 0
+        self.ui.output_text_textEdit.setText(result)
 
     def clear_table(self):
         table = self.ui.tableWidget

@@ -14,140 +14,63 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="tableWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>220</y>
-      <width>671</width>
-      <height>281</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string>LEXEM/WORDFORM</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>SEENUMBER</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>NOTES</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QPushButton" name="add_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>510</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ADD</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="process_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>510</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PROCESS</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="raw_text_textEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>30</y>
       <width>671</width>
-      <height>161</height>
+      <height>241</height>
      </rect>
     </property>
    </widget>
    <widget class="QLabel" name="raw_text_label">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>300</x>
       <y>10</y>
-      <width>71</width>
+      <width>81</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>RAW TEXT</string>
+     <string>YOUR TEXT</string>
     </property>
    </widget>
-   <widget class="QLabel" name="result_label">
+   <widget class="QLabel" name="output_text_label">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>340</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>OUTPUT TEXT</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="output_text_textEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
-      <width>61</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>RESULT</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="filter_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>510</y>
-      <width>75</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>FILTER</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="filter_textEdit">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>520</y>
-      <width>301</width>
-      <height>31</height>
+      <y>360</y>
+      <width>671</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="delete_pushButton">
+   <widget class="QPushButton" name="send_pushButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>510</y>
-      <width>75</width>
-      <height>23</height>
+      <x>290</x>
+      <y>280</y>
+      <width>89</width>
+      <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>DELETE</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="reset_pushButton">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>540</y>
-      <width>75</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>RESET</string>
+     <string>SEND</string>
     </property>
    </widget>
   </widget>
@@ -160,15 +83,6 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionOpen"/>
-    <addaction name="actionOpen_Doc"/>
-    <addaction name="actionSave"/>
-   </widget>
-   <addaction name="menuFile"/>
   </widget>
   <action name="actionOpen">
    <property name="text">

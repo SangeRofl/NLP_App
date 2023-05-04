@@ -3,6 +3,13 @@ import nltk
 import re
 import pymorphy2
 
+import openai
+import dotenv
+import os
+
+dotenv.load_dotenv()
+openai.api_key = os.getenv("API_KEY")
+
 from nltk.tokenize import word_tokenize, sent_tokenize
 
 
@@ -17,6 +24,20 @@ class Model:
     def __init__(self, view):
         self.view = view
         self.current_result = None
+    
+    def make_response(self, text):
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": f"Ответь очень кратко на {text}"},
+            ]
+        )
+
+        result = ''
+        for choice in response.choices:
+            result += choice.message.content
+
+        return result
     
     def process_text(self, text: str) -> dict:
         res = dict()

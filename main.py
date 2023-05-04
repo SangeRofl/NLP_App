@@ -39,20 +39,17 @@ class App(QApplication):
         self.widgets.show()
         
     def init_view(self):
-        self.main_view.ui.process_pushButton.clicked.connect(self.process) 
-        self.main_view.ui.add_pushButton.clicked.connect(self.add) 
-        self.main_view.ui.delete_pushButton.clicked.connect(self.delete)
-        self.main_view.ui.filter_pushButton.clicked.connect(self.filter)
-        self.main_view.ui.reset_pushButton.clicked.connect(self.reset) 
+        self.main_view.ui.send_pushButton.clicked.connect(self.send)
         
-        self.main_view.file_menu.addAction("Open...", self.action_clicked)
-        self.main_view.file_menu.addAction("Open Doc...", self.action_clicked)
-        self.main_view.file_menu.addAction("Save...", self.action_clicked)
-
     def switch_view(self, view):
         self.current_view = view
         self.widgets.setCurrentWidget(self.current_view)
         
+    def send(self):
+        text = self.main_view.ui.raw_text_textEdit.toPlainText()
+        response = self.controller.send_message(text)
+        self.main_view.fill(response)
+    
     def process(self):
         text = self.main_view.ui.raw_text_textEdit.toPlainText()
         self.controller.process_text(text)

@@ -5,6 +5,10 @@ class Controller:
     def __init__(self, view) -> None:
         self.model = Model(view)
     
+    def send_message(self, text):
+        response = self.model.make_response(text)
+        return response
+    
     def process_text(self, text: str):
         processed_text = self.model.process_text(text)
         print("processed_text: ", processed_text)
